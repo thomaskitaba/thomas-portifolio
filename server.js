@@ -12,11 +12,13 @@ app.listen(5000, () => console.log("Server Running"));
 console.log(process.env.EMAIL_USER);
 console.log(process.env.EMAIL_PASS);
 
+
+
 const contactEmail = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: "thomas.kitaba@gmail.com",
-    pass: "rmiubtbgjsxscycd"
+    user: "thomaskitabadiary@gmail.com",
+    pass: "alyh knuk rwyy dopg"
   },
 });
 
@@ -28,15 +30,18 @@ contactEmail.verify((error) => {
   }
 });
 router.post("/contact", (req, res) => {
-  const name = req.body.firstName + req.body.lastName;
-  const email = req.body.email;
-  const message = req.body.message;
-  const phone = req.body.phone;
+  console.log('Received contact form submission:', req.body);
+  const {fname, lname, phone, message, email} = req.body;
+  console.log(JSON.stringify(req.body));
+  // const name = req.body.firstName + req.body.lastName;
+  // const fname = req.body.fname;
+  // const message = req.body.message;
+  // const phone = req.body.phone;
   const mail = {
-    from: name,
-    to: "thomas.kitaba@gmail.com",
-    subject: "Contact Form Submission - Portfolio",
-    html: `<p>Name: ${name}</p>
+    from: `${fname} ${lname}`,
+    to: "thomaskitabadiary@gmail.com",
+    subject: `from ${email}`,
+    html: `<p>Name: ${fname} ${lname}</p>
           <p>Email: ${email}</p>
           <p>Phone: ${phone}</p>
           <p>Message: ${message}</p>`,

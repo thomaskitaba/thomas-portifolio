@@ -91,10 +91,10 @@ export const Specials = () => {
     <section className="specials" id="specials">
       <Container>
         <Row>
-          <Col>
-          <h2>Checkout what is waiting for you</h2>
+          <Col className="align-items-center">
+          <h2 className="tagline">Checkout what is waiting for you</h2>
 
-          <h5>Today is: <span className="special-text">{todaysDay}</span></h5>
+          <h5>Today is: <span className="tagline">{todaysDay}</span></h5>
           {/* defaultActiveKey will be replaced by CURRENT DAY*/}
           <Tab.Container id="specials-tabs" defaultActiveKey={dayIndexOrder}>
             <Nav variant='pills'>
@@ -131,18 +131,21 @@ export const Specials = () => {
                     <h3>{special.title}</h3>
                   </Row>
                   <Row>
-                    <img src={special.imgUrl} alt={`Special for ${special.day}`} />
-                  </Row>
-                  <Row className="event-container">
-                      <Col className="event-container-description align-items-center">
-                        <p>{special.description}</p>
-                      </Col>
-                      <Col className="event-container-events align-items-center special-header">
+                    <Col xs={12} className="event-container-events align-items-center special-header">
                           <div>
                             <h2 className="underline">Events of the Day</h2>
                             <h3>{special.events}</h3>
                           </div>
                       </Col>
+                      <Col xs={12} className="special-image">
+                        <img src={special.imgUrl} alt={`Special for ${special.day}`} />
+                      </Col>
+                  </Row>
+                  <Row className="event-container">
+                      <Col xs={12} className="event-container-description align-items-center py-1">
+                        <p>{special.description}</p>
+                      </Col>
+
                   </Row>
                 </Tab.Pane>
               ))}
